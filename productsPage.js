@@ -56,7 +56,7 @@ let containerMainGalery = document.getElementById('containerCards');
 const searchInput = document.getElementById('search');
 searchInput.addEventListener('input', searchByKeyboard);
 function openMenu() {
-    let menuState =  menu.style.display;
+    let menuState = menu.style.display;
     menu.style.display = menuState === 'block' ? 'none' : 'block';
 }
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showCards(mainProductGalery);
 });
 
-function showCards(mainProductGalery){
+function showCards(mainProductGalery) {
     let bgClassHighProduct = 'relative block bg-azulBasico h-80 w-1/2 md:w-1/4   mt-4 rounded-3xl shadow-lg transition-all overflow-hidden';
     let bgClassLowProduct = 'relative bg-red-400 h-80 w-1/2 md:w-1/4  mt-4 rounded-3xl shadow-lg transition-all overflow-hidden';
     let imgClass = 'rounded-full object-cover  h-1/2 absolute left-1/2 -translate-x-1/2 top-2 transition-all hover:scale-105';
@@ -108,20 +108,24 @@ function showCards(mainProductGalery){
         btnBuy.innerHTML = 'Comprar';
         btnBuy.className = product.amount > 10 ? buttomHighProduct : buttomLowProduct;
         infoItem.appendChild(btnBuy);
+
         
+        const details = document.createElement('p');
+        details.innerHTML = 'ver detalles';
+        details.className = 'text-gray-300 underline cursor-pointer text-sm';
+        infoItem.appendChild(details);
 
         containerMainGalery.appendChild(item);
     }
 }
 
-function searchByCategory(category){
+function searchByCategory(category) {
     auxProductGalery = [];
     auxProductGalery = category != 'todo' ? mainProductGalery.filter(product => product.category === category) : mainProductGalery;
     showCards(auxProductGalery);
 }
-function searchByKeyboard(){
+function searchByKeyboard() {
     const search = searchInput.value.toString().toLowerCase();
-    console.log(search)
     auxProductGalery = search != '' ? mainProductGalery.filter(product => product.product.toLowerCase().includes(search)) : mainProductGalery;
     showCards(auxProductGalery);
 }
