@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="./logo.png" />
+        <!--CSS PURO-->
+        <link rel="stylesheet" href="estilos.css">
+        <!--uso de tailwind-->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!--CONFIGURACION PERSONALIDAZA DE TAILWIND-->
+        <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                grisBasico: '#65686c',
+                grisFuerte: '#0049ac',
+                azulBasico: "#7AC5DF",
+                azulNeutral: "#2D9BF0",
+                azulBajo: "#b5dfea",
+                rosa: "#FFD7EA"
+              }
+            }
+          }
+        }
+        </script>
+        <title>NW</title>
+    </head>
+    <body>
+        <nav class="w-full flex flex-wrap justify-between p-3">
+            <a href="index.html">
+                <img src="./logo.png" alt='logo' class="h-12 object-fit" />
+            </a>
+            <img src="./assets//icon-menu.svg" class="h-6 self-center lg:hidden"
+                alt='menu' onclick="openMenu()"> </img>
+
+            <ul class="h-full  gap-10 items-center mr-10 hidden lg:flex">
+                <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer">Inicio</li>
+                <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer">Productos</li>
+                <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer"><img src="./assets/cart.png" alt='cart' class="h-6" /></li>
+            </ul>
+            <div class="fixed z-50 w-3/4 h-64 bg-white border-2 border-azulBajo rounded-lg shadow-3xl top-14 left-1/2 -translate-x-1/2 hidden" id="menuMovil">
+                <ul class="block w-full p-4">
+                    <li class="text-center mt-8"><a href="#">Inicio</a></li>
+                    <li class="text-center mt-8"><a href="#">Productos</a></li>
+                    <span class="block w-full h-px bg-azulNeutral mt-12"></span>
+                    <ul class="flex justify-center gap-4 mt-2">
+                        <li><img src="./assets/icon-instagram.svg" alt="ig"
+                                class="rounded-full"></li>
+                        <li><img src="./assets/icon-facebook.svg" alt="fb"
+                                class="rounded-full"></li>
+                    </ul>
+                </ul>
+            </div>
+        </nav>
+        <!-- INICIO DE PORTADA-->
+        <div class="relative">
+            <img src="./assets/portada.png" alt="portada">
+            <div class="w-1/2 absolute top-4 right-12 md:right-32">
+                <p class="text-3xl font-bold md:text-7xl lg:mt-20 lg:text-8xl">NorthWind</p>
+                <p class="w-8/12 text-grisBasico mt-6 texto-portada md:text-2xl
+                    md:mt-20 lg:mt-16 lg:text-3xl lg:w-6/12">Encuentra
+                    todo lo que necesites en NorthWind México</p>
+                <button class="bg-azulNeutral text-gray-100 texto-portada w-8/12
+                    h-6 mt-4 block rounded-sm md:h-10 md:w-2/4 md:ml-10
+                    md:text-xl md:mt-8 lg:h-10 lg:ml-2 hover:opacity-50">Nuestros
+                    productos</button>
+            </div>
+        </div>
+        <!--FIN DE PORTADA-->
+        <!--INCIO DE QUIENES SOMO-->
+        <section >
+            <article class="p-4 lg:mt-32 scroll-content fadeTop">
+                <h2 class="font-extrabold text-4xl lg:hidden">QUIÉNES SOMOS</h2>
+                <div class="md:flex md:flex-wrap">
+                    <img src="./logo.png" alt="logo" class="w-1/2 m-auto md:1/4
+                        md:scale-50 md:m-0 order-2">
+                    <div class="md:w-1/2 lg:w-1/2 order-4 flex flex-wrap
+                        justify-start p-3 rounded-3xl lg:bg-azulBajo">
+                        <h2 class="hidden font-extrabold text-5xl lg:block
+                            lg:mt-8 lg:p-5">QUIÉNES SOMOS</h2>
+                        <p class="text-sm text-gray-400 w-full m-auto mt-4
+                            md:m-0 md:text-gray-500 md:font-extrabold
+                            md:text-2xl md:self-center lg:self-start lg:p-5">Big
+                            company announcement or simple sub-header taking two
+                            or
+                            more lines.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <!--FIN DE QUIENES SOMO-->
+        <!--INCIO DE PRODUCTOS DESTACADOS-->
+        <div class="p-4">
+            <h2 class="font-extrabold text-4xl scroll-content fadeTop">Productos Destacados</h2>
+            <a href="#" class="block w-full text-lg ml-4 font-extrabold
+                text-gray-600 md:text-center md:mt-10 md:mb-10 md:text-2xl scroll-content fadeTop">PRODUCTOS
+                DESTACADOS</a>
+            <!--CARRUSEL DE PRODUCTOS-->
+            <div class="relative scroll-content fadeLeft overflow-hidden">
+                <div id="slider" class="flex slider">
+                </div>
+                <img src="./assets/icon-previous.svg" alt="previous"
+                    class="absolute top-1/2 left-6 -translate-x-1/2
+                    -translate-y-1/2 h-6 cursor-pointer"
+                    onclick="moveSlider(false)">
+                <img src="./assets/icon-next.svg" alt="next" class="absolute
+                    top-1/2 right-2 -translate-x-1/2 -translate-y-1/2 h-6
+                    cursor-pointer" onclick="moveSlider(true)">
+            </div>
+            <!--FIN DE CRRUSEL-->
+            <button class="bg-azulNeutral text-white p-2 rounded-md block m-auto
+                mt-20 md:w-1/3 lg:w-1/4 hover:opacity-50">Ver todos los
+                productos</button>
+        </div>
+        <!--FIN DE PRODUCTOS DESTACADOS-->
+
+        <footer class="p-4 bg-gray-300 mt-20">
+            <ul class="flex justify-center gap-4">
+                <li><img src="./assets/icon-instagram.svg" alt="ig"
+                        class="rounded-full"></li>
+                <li><img src="./assets/icon-facebook.svg" alt="fb"
+                        class="rounded-full"></li>
+            </ul>
+            <p class="mt-10 text-center text-gray-500 text-sm font-extrabold">NorthWind</p>
+            <p class="text-center text-gray-500 text-sm w-3/4 m-auto">Todos los
+                derechos reservados © 2023</p>
+            <p class="text-center text-gray-500 text-sm w-3/4 m-auto">NorthWind
+                es una empresa líder en la industria que ofrece soluciones
+                innovadoras y de alta calidad a nuestros clientes.</p>
+            <p class="mt-4 text-center text-gray-500 texto-portada w-3/4
+                m-auto">Correo: northwind@gmail.com</p>
+            <p class="mt-2 text-center text-gray-500 texto-portada w-3/4
+                m-auto">Teléfono: 55 129-78456</p>
+        </footer>
+        <script src="./main.js"></script>
+    </body>
+</html>
