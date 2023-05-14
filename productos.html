@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./logo.png" />
+        <!--CSS PURO-->
+        <link rel="stylesheet" href="estilos.css">
+        <!--uso de tailwind-->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!--CONFIGURACION PERSONALIDAZA DE TAILWIND-->
+        <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                grisBasico: '#65686c',
+                grisFuerte: '#0049ac',
+                azulBasico: "#7AC5DF",
+                azulNeutral: "#2D9BF0",
+                azulBajo: "#b5dfea",
+                rosa: "#FFD7EA"
+              }
+            }
+          }
+        }
+        </script>
+        <title>NW</title>
+</head>
+<body>
+    <nav class="w-full flex flex-wrap justify-between p-3">
+        <a href="index.html">
+            <img src="./logo.png" alt='logo' class="h-12 object-fit" />
+        </a>
+        <img src="./assets//icon-menu.svg" class="h-6 self-center lg:hidden"
+            alt='menu' onclick="openMenu()"> </img>
+
+        <ul class="h-full  gap-10 items-center mr-10 hidden lg:flex">
+            <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer"><a href="index.html">Inicio</a></li>
+            <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer"><a href="productos.html">Productos</a></li>
+            <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer"><img src="./assets/cart.png" alt='cart' class="h-6" /></li>
+        </ul>
+        <div class="fixed z-50 w-3/4 h-64 bg-white border-2 border-azulBajo rounded-lg shadow-3xl top-14 left-1/2 -translate-x-1/2 hidden" id="menuMovil">
+            <ul class="block w-full p-4">
+                <li class="text-center mt-8"><a href="#">Inicio</a></li>
+                <li class="text-center mt-8"><a href="#">Productos</a></li>
+                <span class="block w-full h-px bg-azulNeutral mt-12"></span>
+                <ul class="flex justify-center gap-4 mt-2">
+                    <li><img src="./assets/icon-instagram.svg" alt="ig"
+                            class="rounded-full"></li>
+                    <li><img src="./assets/icon-facebook.svg" alt="fb"
+                            class="rounded-full"></li>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="relative w-3/4 m-auto block">
+        <input id="search" class="pl-10 py-2 pr-4 border border-gray-300 rounded-md w-full" type="text" placeholder="Search" >
+        <label for="search" class="absolute inset-y-0 left-0 flex items-center pl-2">
+          <img src="./assets/icon-search.svg" alt="search" class="w-5">
+        </label>
+      </div>
+      
+      
+      <section class="mt-10 p-4 flex gap-4">
+          <aside class="w-1/4 h-64 bg-gray-200">
+            <h3 class="font-extrabold text-center mt-10">Categorías</h3>
+            <div class="p-4">
+                <div class="flex items-center mt-4">
+                    <input id="todo" type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600" onchange="searchByCategory('todo')">
+                    <label for="todo" class="ml-2 text-sm text-gray-700">Todo</label>
+                  </div>
+                <div class="flex items-center mt-4">
+                    <input id="categoria1" type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600" onchange="searchByCategory('categoria1')">
+                    <label for="categoria1" class="ml-2 text-sm text-gray-700">Categoría 1</label>
+                  </div>
+                  <div class="flex items-center mt-4">
+                    <input id="categoria2" type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600" onchange="searchByCategory('categoria2')">
+                    <label for="categoria2" class="ml-2 text-sm text-gray-700">Categoría 2</label>
+                  </div>
+            </div>
+          </aside>
+          <article class="w-8/12">
+            <div id="containerCards" class="w-full flex flex-wrap gap-2 justify-around"></div>
+          </article>
+      </section>
+
+    <footer class="p-4 bg-gray-300 mt-20">
+        <ul class="flex justify-center gap-4">
+            <li><img src="./assets/icon-instagram.svg" alt="ig"
+                    class="rounded-full"></li>
+            <li><img src="./assets/icon-facebook.svg" alt="fb"
+                    class="rounded-full"></li>
+        </ul>
+        <p class="mt-10 text-center text-gray-500 text-sm font-extrabold">NorthWind</p>
+        <p class="text-center text-gray-500 text-sm w-3/4 m-auto">Todos los
+            derechos reservados © 2023</p>
+        <p class="text-center text-gray-500 text-sm w-3/4 m-auto">NorthWind
+            es una empresa líder en la industria que ofrece soluciones
+            innovadoras y de alta calidad a nuestros clientes.</p>
+        <p class="mt-4 text-center text-gray-500 texto-portada w-3/4
+            m-auto">Correo: northwind@gmail.com</p>
+        <p class="mt-2 text-center text-gray-500 texto-portada w-3/4
+            m-auto">Teléfono: 55 129-78456</p>
+    </footer>
+    <script src="./productsPage.js"></script>
+</body>
+</html>

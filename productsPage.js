@@ -1,81 +1,80 @@
-let productGalery = [
+
+let mainProductGalery = [
     {
-        photo: './assets/cart.png',
-        product: "CART",
+        photo: './assets/coffe.jpg',
+        product: "COFFE",
         description: "Mini descripcion",
-        amount: 11
+        amount: 11,
+        category: 'categoria1',
+        price: 200
     },
     {
         photo: './assets/tofu.png',
         product: "TOFU",
         description: "Mini descripcion",
-        amount: 5
+        amount: 5,
+        category: 'categoria1',
+        price: 100
     },
     {
-        photo: './assets/portada.png',
-        product: "PORTADA",
+        photo: './assets/queso.jpg',
+        product: "QUESO",
         description: "Mini descripcion",
-        amount: 12
+        amount: 12,
+        category: 'categoria2',
+        price: 200
     },
     {
         photo: './assets/tofu.png',
         product: "TOFU",
         description: "Mini descripcion",
-        amount: 5
+        amount: 5,
+        category: 'categoria2',
+        price: 400
     },
     {
-        photo: './assets/portada.png',
+        photo: './assets/chai.jpg',
         product: "PORTADA",
         description: "Mini descripcion",
-        amount: 12
+        amount: 12,
+        category: 'categoria1',
+        price: 200
     },
     {
-        photo: './assets/cart.png',
+        photo: './assets/queso.jpg',
         product: "CART",
         description: "Mini descripcion",
-        amount: 11
+        amount: 11,
+        category: 'categoria2',
+        price: 40
     },
 ];
+let auxProductGalery = [];
 
-let position = 0;
-
-let containerSlider = document.getElementById('slider');
 let menu = document.getElementById('menuMovil');
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    slider();
-});
-window.addEventListener('scroll', function () {
-    let elements = document.getElementsByClassName('scroll-content');
-    let screenSize = window.innerHeight;
-
-    for (const item of elements) {
-        let element = item;
-
-        if (element.getBoundingClientRect().top < screenSize - 100) {
-            element.classList.add('visible');
-        } else {
-            element.classList.remove('visible');
-        }
-    }
-
-});
+let containerMainGalery = document.getElementById('containerCards');
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', searchByKeyboard);
 function openMenu() {
     let menuState =  menu.style.display;
     menu.style.display = menuState === 'block' ? 'none' : 'block';
 }
 
-function slider() {
-    let bgClassHighProduct = 'relative block bg-azulBasico h-80 card  mt-4 rounded-3xl shadow-lg transition-all';
-    let bgClassLowProduct = 'relative bg-red-400 h-80 card  mt-4 rounded-3xl shadow-lg transition-all';
-    let imgClass = 'rounded-full h-1/2 absolute left-1/2 -translate-x-1/2 top-2 transition-all hover:scale-105';
+document.addEventListener('DOMContentLoaded', function () {
+    showCards(mainProductGalery);
+});
+
+function showCards(mainProductGalery){
+    let bgClassHighProduct = 'relative block bg-azulBasico h-80 w-1/2 md:w-1/4   mt-4 rounded-3xl shadow-lg transition-all overflow-hidden';
+    let bgClassLowProduct = 'relative bg-red-400 h-80 w-1/2 md:w-1/4  mt-4 rounded-3xl shadow-lg transition-all overflow-hidden';
+    let imgClass = 'rounded-full object-cover  h-1/2 absolute left-1/2 -translate-x-1/2 top-2 transition-all hover:scale-105';
     let divInfoClass = 'bg-white border-gray-200 border-2 absolute w-full bottom-0 rounded-3xl flex flex-wrap justify-center p-2 gap-2';
     let descriptionClass = 'text-grisBasico texto-portada block w-full';
     let buttomHighProduct = 'bg-azulBasico text-gray-100 texto-portada w-8/12 h-6  rounded-sm md:h-8  hover:opacity-75';
     let buttomLowProduct = 'bg-red-400 text-white texto-portada w-8/12 h-6  rounded-sm md:h-8  hover:opacity-75';
-
-    for (const element of productGalery) {
+    //limpiamos el contenido del div
+    containerMainGalery.innerHTML = '';
+    for (const element of mainProductGalery) {
         const product = element;
 
         //se crea el contenedor de cada producto
@@ -109,27 +108,20 @@ function slider() {
         btnBuy.innerHTML = 'Comprar';
         btnBuy.className = product.amount > 10 ? buttomHighProduct : buttomLowProduct;
         infoItem.appendChild(btnBuy);
+        
 
-
-        containerSlider.appendChild(item);
+        containerMainGalery.appendChild(item);
     }
-
-
 }
 
-function moveSlider(direction) {
-    if (direction) {
-        position -= 16.6667;
-        if (position < -100) position = 0;
-        containerSlider.style.transform = `translateX(${position}%)`;
-
-    } else {
-        position += 16.6667;
-        if (position > 0) position = -83.333;
-        containerSlider.style.transform = `translateX(${position}%)`;
-    }
-
-
+function searchByCategory(category){
+    auxProductGalery = [];
+    auxProductGalery = category != 'todo' ? mainProductGalery.filter(product => product.category === category) : mainProductGalery;
+    showCards(auxProductGalery);
 }
-
-
+function searchByKeyboard(){
+    const search = searchInput.value.toString().toLowerCase();
+    console.log(search)
+    auxProductGalery = search != '' ? mainProductGalery.filter(product => product.product.toLowerCase().includes(search)) : mainProductGalery;
+    showCards(auxProductGalery);
+}
