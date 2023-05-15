@@ -23,7 +23,10 @@
     flex-shrink: 0;
 }
 
-
+.label{
+    rotate: 250deg;
+    
+}
 
 .fadeTop {
     visibility: hidden;
