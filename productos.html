@@ -84,6 +84,63 @@
           </aside>
           <article class="w-8/12 min-h-screen">
             <div id="containerCards" class="w-full flex flex-wrap gap-2 justify-around"></div>
+
+            <!-- MODAL VER DETALLES-->
+            <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
+              <div class="bg-white w-96 mx-auto rounded-lg shadow-lg p-5">
+                <div class="flex items-center justify-between mb-4">
+                  <h2 class="text-xl font-bold">Detalles</h2>
+                  <button
+                    type="button"
+                    id="closeModal"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <form class="flex flex-col bg-gray-100 py-10 px-4 rounded-lg shadow-lg max-w-md mx-auto">
+                  <label class="block text-gray-600 font-bold mb-2" for="clave">Clave</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="clave" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="producto">Producto</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="producto" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="categoria">Categoría</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="categoria" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="existencia">Existencia</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="existencia" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="precio">Precio</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="precio" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="categoria">Nivel de reorden</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nivel" type="text">
+                </form>
+                
+                <div class="flex items-center justify-center mt-5">
+                  <div class="mr-4">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Editar</button>
+                  </div>
+                  <div>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
       </section>
 
