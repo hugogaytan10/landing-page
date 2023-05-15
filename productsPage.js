@@ -136,70 +136,21 @@ function searchByCategory(category) {
     auxProductGalery = category != 'todo' ? mainProductGalery.filter(product => product.category === category) : mainProductGalery;
     showCards(auxProductGalery);
 }
+
 function searchByKeyboard() {
     const search = searchInput.value.toString().toLowerCase();
     auxProductGalery = search != '' ? mainProductGalery.filter(product => product.product.toLowerCase().includes(search)) : mainProductGalery;
     showCards(auxProductGalery);
 }
 
-function showForm() {
-    // Creamos el contenedor del formulario
-    const formContainer = document.createElement('div');
-    formContainer.className = 'max-w-md mx-auto my-4 p-4 bg-white rounded-lg shadow-md';
-  
-    // Creamos el formulario
-    const form = document.createElement('form');
-    form.className = 'flex flex-wrap gap-4';
-  
-    // Creamos los campos del formulario
-    const claveInput = createInput('Clave', 'text');
-    const productoInput = createInput('Producto', 'text');
-    const categoriaInput = createInput('Categoría', 'text');
-    const existenciaInput = createInput('Existencia', 'number');
-    const precioInput = createInput('Precio', 'number');
-    const fotoInput = createInput('Foto', 'file');
-    const nivelInput = createInput('Nivel de reorden', 'number');
-  
-    // Creamos el botón de enviar
-    const submitButton = document.createElement('button');
-    submitButton.type = 'submit';
-    submitButton.innerHTML = 'Editar';
-    submitButton.className = 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded';
-  
-    // Agregamos los campos y el botón al formulario
-    form.appendChild(claveInput);
-    form.appendChild(productoInput);
-    form.appendChild(categoriaInput);
-    form.appendChild(existenciaInput);
-    form.appendChild(precioInput);
-    form.appendChild(fotoInput);
-    form.appendChild(nivelInput);
-    form.appendChild(submitButton);
-  
-    // Agregamos el formulario al contenedor y luego al cuerpo del documento
-    formContainer.appendChild(form);
-    document.body.appendChild(formContainer);
-  }
-  
-  function createInput(labelText, inputType) {
-    // Creamos el contenedor del campo
-    const container = document.createElement('div');
-    container.className = 'w-full';
-  
-    // Creamos la etiqueta del campo
-    const label = document.createElement('label');
-    label.innerHTML = labelText;
-    label.className = 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2';
-  
-    // Creamos el campo de entrada
-    const input = document.createElement('input');
-    input.type = inputType;
-    input.className = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500';
-  
-    // Agregamos la etiqueta y el campo al contenedor
-    container.appendChild(label);
-    container.appendChild(input);
-  
-    return container;
-  }
+function add() {
+    document.getElementById('modal').classList.remove('hidden');
+    document.getElementById('deleteButton').style.display = 'none';
+    document.getElementById('editButton').innerHTML = 'Guardar';
+
+    const closeModalButton = document.getElementById('closeModal');
+    closeModalButton.addEventListener('click', () => {
+        document.getElementById('modal').classList.add('hidden');
+    });
+}
   

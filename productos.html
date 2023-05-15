@@ -85,7 +85,7 @@
           <article class="w-8/12 min-h-screen">
             <div id="containerCards" class="w-full flex flex-wrap gap-2 justify-around"></div>
 
-            <!-- MODAL VER DETALLES-->
+            <!-- MODAL VER DETALLES -->
             <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
               <div class="bg-white w-96 mx-auto rounded-lg shadow-lg p-5">
                 <div class="flex items-center justify-between mb-4">
@@ -133,14 +133,33 @@
                 
                 <div class="flex items-center justify-center mt-5">
                   <div class="mr-4">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Editar</button>
+                    <button id="editButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Editar</button>
                   </div>
                   <div>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Eliminar</button>
+                    <button id="deleteButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Eliminar</button>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- ADD BUTTON -->
+            <button 
+              id="addButton"
+              class="fixed bottom-4 right-4 p-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-700 hover:drop-shadow-2xl hover:animate-bounce duration-300"
+              onclick="add()">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                class="h-6 w-6" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor">
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+              </svg>
+            </button>
+            
           </article>
       </section>
 
