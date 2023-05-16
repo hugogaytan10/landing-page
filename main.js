@@ -57,7 +57,12 @@ let menu = document.getElementById('menuMovil');
 
 document.addEventListener('DOMContentLoaded', function () {
     slider();
+
+    document.getElementById('cart').addEventListener("click", function() {
+      window.location.href = "cartPage.html";
+    });
 });
+
 window.addEventListener('scroll', function () {
     let elements = document.getElementsByClassName('scroll-content');
     let screenSize = window.innerHeight;
@@ -73,6 +78,7 @@ window.addEventListener('scroll', function () {
     }
 
 });
+
 function openMenu() {
     let menuState =  menu.style.display;
     menu.style.display = menuState === 'block' ? 'none' : 'block';
@@ -132,11 +138,8 @@ function slider() {
         btnBuy.className = product.amount > 10 ? buttomHighProduct : buttomLowProduct;
         infoItem.appendChild(btnBuy);
 
-
         containerSlider.appendChild(item);
     }
-
-
 }
 
 function moveSlider(direction) {
@@ -144,14 +147,9 @@ function moveSlider(direction) {
         position -= 16.6667;
         if (position < -100) position = 0;
         containerSlider.style.transform = `translateX(${position}%)`;
-
     } else {
         position += 16.6667;
         if (position > 0) position = -83.333;
         containerSlider.style.transform = `translateX(${position}%)`;
     }
-
-
 }
-
-
