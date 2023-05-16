@@ -57,10 +57,6 @@ let menu = document.getElementById('menuMovil');
 
 document.addEventListener('DOMContentLoaded', function () {
     slider();
-
-    document.getElementById('cart').addEventListener("click", function() {
-      window.location.href = "cartPage.html";
-    });
 });
 
 window.addEventListener('scroll', function () {

@@ -62,10 +62,6 @@ function openMenu() {
 
 document.addEventListener('DOMContentLoaded', function () {
     showCards(mainProductGalery);
-
-    document.getElementById('cart').addEventListener("click", function() {
-        window.location.href = "cartPage.html";
-    });
 });
 
 function showCards(mainProductGalery) {

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./logo.png" />
+        <!--CSS PURO-->
+        <link rel="stylesheet" href="estilos.css">
+        <!--uso de tailwind-->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!--CONFIGURACION PERSONALIDAZA DE TAILWIND-->
+        <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                grisBasico: '#65686c',
+                grisFuerte: '#0049ac',
+                azulBasico: "#7AC5DF",
+                azulNeutral: "#2D9BF0",
+                azulBajo: "#b5dfea",
+                rosa: "#FFD7EA"
+              }
+            }
+          }
+        }
+        </script>
+        <title>NW</title>
+</head>
+<body>
+    <nav class="w-full flex flex-wrap justify-between p-3 bg-gray-200">
+        <a href="index.html">
+            <img src="./logo.png" alt='logo' class="h-12 object-fit" />
+        </a>
+        <img src="./assets//icon-menu.svg" class="h-6 self-center lg:hidden"
+            alt='menu' onclick="openMenu()"> </img>
+
+        <ul class="h-full  gap-10 items-center mr-10 hidden lg:flex">
+            <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer"><a href="index.html">Inicio</a></li>
+            <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer"><a href="productos.html">Productos</a></li>
+            <li class="p-2 hover:bg-azulBajo rounded-3xl transition-all cursor-pointer"><a href="cartPage.html"><img src="./assets/cart.png" alt='cart' class="h-6" /></a></li>
+        </ul>
+        <div class="fixed z-50 w-3/4 h-64 bg-white border-2 border-azulBajo rounded-lg shadow-3xl top-14 left-1/2 -translate-x-1/2 hidden" id="menuMovil">
+            <ul class="block w-full p-4">
+              <li class="text-center mt-4"><a href="index.html">Inicio</a></li>
+              <li class="text-center mt-4"><a href="productos.html">Productos</a></li>
+              <li class="flex justify-center mt-4"><a href="cartPage.html"><img src="./assets/cart.png" alt='cart' class="h-6" /></a></li>
+
+              <span class="block w-full h-px bg-azulNeutral mt-12"></span>
+              <ul class="flex justify-center gap-4 mt-2">
+              <li><img src="./assets/icon-instagram.svg" alt="ig"
+                      class="rounded-full"></li>
+              <li><img src="./assets/icon-facebook.svg" alt="fb"
+                      class="rounded-full"></li>
+              </ul>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="relative w-3/4 m-auto block mt-5">
+        <input id="search" class="pl-10 py-2 pr-4 border border-gray-300 rounded-md w-full" type="text" placeholder="Search" >
+        <label for="search" class="absolute inset-y-0 left-0 flex items-center pl-2">
+          <img src="./assets/icon-search.svg" alt="search" class="w-5">
+        </label>
+      </div>
+      
+      
+      <section class="mt-10 p-4 flex flex-wrap gap-4">
+          <aside class="w-3/4 block m-auto md:m-0 md:w-1/4 md:h-64 bg-gray-200">
+            <h3 class="font-extrabold text-center mt-10">Resumen de compra</h3>
+            <div class="flex flex-wrap justify-around md:block p-4">
+                <div class="flex justify-center items-center mt-4">
+                    <label for="todo" class="text-base text-gray-700">Total</label>
+                    <label for="todo" class="ml-8 text-base text-gray-700">$0.00</label>
+                </div>
+                <div class="flex justify-center items-center">
+                  <button class="bg-azulNeutral text-white p-2 rounded-md mt-10 hover:opacity-50">Comprar ahora</button>
+                </div>
+            </div>
+            </div>
+          </aside>
+          <article class="w-full md:w-8/12 min-h-screen">
+            <div id="containerCards" class="w-full flex flex-wrap md:gap-2 justify-around"></div>
+
+            <!-- MODAL VER DETALLES -->
+            <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
+              <div class="bg-white w-96 mx-auto rounded-lg shadow-lg p-5">
+                <div class="flex items-center justify-between mb-4">
+                  <h2 class="text-xl font-bold">Detalles</h2>
+                  <button
+                    type="button"
+                    id="closeModal"
+                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-modal-dismiss
+                    aria-label="Close">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <form class="flex flex-col bg-gray-100 py-10 px-4 rounded-lg shadow-lg max-w-md mx-auto">
+                  <label class="block text-gray-600 font-bold mb-2" for="clave">Clave</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="clave" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="producto">Producto</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="producto" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="categoria">Categoría</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="categoria" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="existencia">Existencia</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="existencia" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="precio">Precio</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="precio" type="text">
+                  
+                  <label class="block text-gray-600 font-bold mb-2" for="categoria">Nivel de reorden</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nivel" type="text">
+                </form>
+                
+                <div class="flex items-center justify-center mt-5">
+                  <div class="mr-4">
+                    <button id="editButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Editar</button>
+                  </div>
+                  <div>
+                    <button id="deleteButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+      </section>
+
+    <footer class="p-4 bg-gray-300 mt-20">
+        <ul class="flex justify-center gap-4">
+            <li><img src="./assets/icon-instagram.svg" alt="ig"
+                    class="rounded-full"></li>
+            <li><img src="./assets/icon-facebook.svg" alt="fb"
+                    class="rounded-full"></li>
+        </ul>
+        <p class="mt-10 text-center text-gray-500 text-sm font-extrabold">NorthWind</p>
+        <p class="text-center text-gray-500 text-sm w-3/4 m-auto">Todos los
+            derechos reservados © 2023</p>
+        <p class="text-center text-gray-500 text-sm w-3/4 m-auto">NorthWind
+            es una empresa líder en la industria que ofrece soluciones
+            innovadoras y de alta calidad a nuestros clientes.</p>
+        <p class="mt-4 text-center text-gray-500 texto-portada w-3/4
+            m-auto">Correo: northwind@gmail.com</p>
+        <p class="mt-2 text-center text-gray-500 texto-portada w-3/4
+            m-auto">Teléfono: 55 129-78456</p>
+    </footer>
+    <script src="./cart.js"></script>
+</body>
+</html>
